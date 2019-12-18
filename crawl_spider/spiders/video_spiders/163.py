@@ -2,6 +2,13 @@
 # author : yinkang
 # data: 2019/12/16
 
+import os
+import sys
+
+par_dir = os.path.dirname(os.path.abspath(__file__)) + '/../..'
+os.chdir(par_dir)
+sys.path.append(par_dir)
+
 import re
 import requests
 from Crypto.Cipher import AES

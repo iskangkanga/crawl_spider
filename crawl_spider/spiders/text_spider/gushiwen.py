@@ -4,6 +4,13 @@
 # 说明：对于重名古诗，优先下载网站给出的优先级最高的，搜索结果与网站有关，与代码无关
 # 个别古诗在搜索关键字时，返回结果不正确，系网站搜索结果，如：搜索‘无衣’，返回结果第一篇为‘乌衣巷’
 
+import os
+import sys
+
+par_dir = os.path.dirname(os.path.abspath(__file__)) + '/../..'
+os.chdir(par_dir)
+sys.path.append(par_dir)
+
 import logging
 import re
 import requests

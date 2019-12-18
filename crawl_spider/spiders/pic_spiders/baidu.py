@@ -2,12 +2,18 @@
 # author : yinkang
 # data: 2019/12/18
 
-from urllib import parse
+import os
+import sys
+
+par_dir = os.path.dirname(os.path.abspath(__file__)) + '/../..'
+os.chdir(par_dir)
+sys.path.append(par_dir)
 
 import requests
 import logging
 from service import downloader
 import re
+from urllib import parse
 
 logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s - %(name)s - %(levelname)s - %(filename)s - %(lineno)d - %(message)s')
