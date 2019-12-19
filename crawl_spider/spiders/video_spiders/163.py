@@ -2,6 +2,8 @@
 # author : yinkang
 # data: 2019/12/16
 
+# 命令行运行：python 163.py -u 链接
+
 import os
 import sys
 
@@ -14,7 +16,7 @@ import requests
 from Crypto.Cipher import AES
 import base64
 import logging
-from service import downloader
+from service import downloader,start
 
 logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s - %(name)s - %(levelname)s - %(filename)s - %(lineno)d - %(message)s')
@@ -104,6 +106,6 @@ class WangYiYun():
             logging.info('[视频下载异常] %s', path)
 
 
-url = input('请输入链接：')
+url = start.get_video_url()
 WangYispider = WangYiYun(url)
 WangYispider.spider_begin()

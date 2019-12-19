@@ -20,12 +20,7 @@ logging.basicConfig(level=logging.INFO,
 
 # 视频下载方法
 def down_file(video_url, path, headers=None):
-    root = 'cache/'
-    flag = os.path.exists(root)
-    if flag:
-        pass
-    else:
-        os.mkdir(root)
+    mkdir()
 
     file_name = path
     start_time = time.time()
@@ -68,12 +63,8 @@ def down_file(video_url, path, headers=None):
 
 # 文件写入方法
 def write_file(path, content, author, dys=None):
-    root = 'cache/'
-    flag = os.path.exists(root)
-    if flag:
-        pass
-    else:
-        os.mkdir(root)
+    mkdir()
+
     file_name = path
     try:
         with open('cache/%s.txt' % file_name, 'a', encoding='utf-8') as fp:
@@ -105,12 +96,7 @@ def write_file(path, content, author, dys=None):
 
 # 无加密m3u8文件下载
 def down_m3u8_file(video_url, path, headers):
-    root = 'cache/'
-    flag = os.path.exists(root)
-    if flag:
-        pass
-    else:
-        os.mkdir(root)
+    mkdir()
 
     name = path
     url = video_url
@@ -202,12 +188,7 @@ def run(ts_queue, headers):
 
 # 加密的m3u8视频多线程下载方法, 包括合并与删除冗余等操作
 def down_s_m3u8_file(video_url, path, headers):
-    root = 'cache/'
-    flag = os.path.exists(root)
-    if flag:
-        pass
-    else:
-        os.mkdir(root)
+    mkdir()
     name = path
     url = video_url
     start = datetime.datetime.now().replace(microsecond=0)
@@ -337,12 +318,7 @@ def get_video_legth(name):
 
 # 图片下载方法
 def down_pic(path, pic_urls, headers=None):
-    root = 'cache/'
-    flag = os.path.exists(root)
-    if flag:
-        pass
-    else:
-        os.mkdir(root)
+    mkdir()
     for i, url in enumerate(pic_urls):
         file_name = path + str(i) + '.jpg'
         try:
@@ -352,3 +328,13 @@ def down_pic(path, pic_urls, headers=None):
             logging.info('下载异常')
             return False
     return True
+
+
+# 所有下载方法执行前，判断是否存在缓存文件夹
+def mkdir():
+    root = 'cache/'
+    flag = os.path.exists(root)
+    if flag:
+        pass
+    else:
+        os.mkdir(root)

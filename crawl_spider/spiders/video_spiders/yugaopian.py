@@ -2,6 +2,8 @@
 # author : yinkang
 # data: 2019/12/17
 
+# 命令行运行：python yugaopian.py -u 链接
+
 import os
 import sys
 
@@ -11,8 +13,9 @@ sys.path.append(par_dir)
 
 import requests
 import logging
-from service import downloader
+from service import downloader, start
 import re
+
 
 logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s - %(name)s - %(levelname)s - %(filename)s - %(lineno)d - %(message)s')
@@ -101,6 +104,6 @@ class YuGaoPian():
             logging.info('[视频下载异常] %s', path)
 
 
-url = input('请输入链接：')
+url = start.get_video_url()
 yugaopian = YuGaoPian(url)
 yugaopian.spider_begin()

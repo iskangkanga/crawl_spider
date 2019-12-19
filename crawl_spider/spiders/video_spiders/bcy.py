@@ -2,6 +2,8 @@
 # author : yinkang
 # data: 2019/12/17
 
+# 命令行运行：python bcy.py -u 链接
+
 import os
 import sys
 
@@ -15,7 +17,7 @@ import random
 
 import requests
 import logging
-from service import downloader
+from service import downloader, start
 import re
 
 logging.basicConfig(level=logging.INFO,
@@ -91,6 +93,6 @@ class BanCiYuan():
 
 
 # https://bcy.net/item/detail/6751173433834340622?_source_page=video&_sub_channel_name=%E8%90%8C%E5%AE%A0
-url = input('请输入链接：')
+url = start.get_video_url()
 bcy = BanCiYuan(url)
 bcy.spider_begin()

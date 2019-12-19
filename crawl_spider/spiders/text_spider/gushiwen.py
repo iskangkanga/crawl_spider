@@ -4,6 +4,8 @@
 # 说明：对于重名古诗，优先下载网站给出的优先级最高的，搜索结果与网站有关，与代码无关
 # 个别古诗在搜索关键字时，返回结果不正确，系网站搜索结果，如：搜索‘无衣’，返回结果第一篇为‘乌衣巷’
 
+# 命令行运行：python gushiwen.py -k 关键词
+
 import os
 import sys
 
@@ -14,7 +16,7 @@ sys.path.append(par_dir)
 import logging
 import re
 import requests
-from service import downloader
+from service import downloader, start
 
 logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s - %(name)s - %(levelname)s - %(filename)s - %(lineno)d - %(message)s')
@@ -63,6 +65,6 @@ class GuShiWen():
             logging.info('[文件下载异常] %s', title)
 
 
-keyword = input('请输入古诗名：')
-gushiwen = GuShiWen(keyword)
+key = start.get_text_params()
+gushiwen = GuShiWen(key)
 gushiwen.spider_begin()

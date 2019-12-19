@@ -2,6 +2,8 @@
 # author : yinkang
 # data: 2019/12/18
 
+# 命令行运行：python baidu.py -k 关键词 -n 需求图片数量
+
 import os
 import sys
 
@@ -11,7 +13,7 @@ sys.path.append(par_dir)
 
 import requests
 import logging
-from service import downloader
+from service import downloader, start
 import re
 from urllib import parse
 
@@ -74,7 +76,6 @@ class BaiDuPic():
             logging.info('[主题图片下载异常] %s', self.key)
 
 
-key = input('请输入关键字：')
-num = input('请输入数量：')
+key, num = start.get_pic_params()
 bdp = BaiDuPic(key, num)
 bdp.spider_begin()

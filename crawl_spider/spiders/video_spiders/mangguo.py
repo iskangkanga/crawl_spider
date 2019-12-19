@@ -2,6 +2,8 @@
 # author : yinkang
 # data: 2019/12/17
 
+# 命令行运行：python mangguo.py -u 链接
+
 import os
 import sys
 
@@ -14,7 +16,7 @@ import time
 
 import requests
 import logging
-from service import downloader
+from service import downloader, start
 import re
 
 logging.basicConfig(level=logging.INFO,
@@ -116,6 +118,6 @@ class MangGuo():
 
 
 # https://www.mgtv.com/b/331915/6872640.html
-url = input('请输入链接：')
+url = start.get_video_url()
 mg = MangGuo(url)
 mg.spider_begin()
